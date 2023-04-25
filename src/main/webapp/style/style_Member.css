@@ -1,0 +1,367 @@
+@charset "UTF-8";
+
+/*/////////////// 로그인 시작 /member/login.jsp //////////////// */
+#wrap #main.loginPage {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -70%);
+	text-align: center;
+	padding: 40px;
+	background-color: #fff;
+	flex-direction: column;
+}
+
+#main.loginPage .logoArea {
+	padding-bottom: 30px;
+}
+
+#wrap #main>div.loginDiv form#loginFrm {
+	padding: 20px;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	display: inline-block;
+}
+
+#main .loginDiv>#loginFrm input {
+	width: 320px;
+	font-size: 17px;
+	padding: 13px 16px;
+	margin-bottom: 7px;
+	display: block;
+	border: 1px solid #858585;
+	border-radius: 4px;
+}
+
+#main .loginDiv>#loginFrm input:focus-visible {
+	border: 1px solid #50b639;
+	outline: 1px solid #50b639;
+}
+
+#main .loginDiv>#loginFrm button {
+	width: 320px;
+	color: #fff;
+	font-size: 18px;
+	padding: 15px 20px;
+	border: none;
+	margin-top: 17px;
+	margin-bottom: 7px;
+	background-color: #50b639;
+	cursor: pointer;
+	display: block;
+	border-radius: 4px;
+}
+
+#main .loginDiv #find_wrap {
+	padding: 20px 0 35px;
+	text-align: center;
+}
+
+#main .loginDiv #find_wrap li {
+	position: relative;
+	display: inline-block;
+}
+
+#main .loginDiv #find_wrap li+li {
+	padding-left: 28px;
+}
+
+#main .loginDiv #find_wrap .find_text {
+	display: inline-block;
+	font-size: 14px;
+	line-height: 17px;
+	text-decoration: none;
+	color: #888;
+}
+
+#main .loginDiv #find_wrap .find_text:before {
+	content: '';
+	position: absolute;
+	top: 3px;
+	left: 12px;
+	width: 1px;
+	height: 12px;
+	border-radius: 0.5px;
+	background-color: #dadada;
+}
+/*/////////////// 로그인 끝 /member/login.jsp //////////////// */
+#main.joinAgreePage.dFlex {
+	flex-direction: column;
+	align-items: center;
+}
+
+#main.joinAgreePage .logoArea {
+	padding: 30px 0;
+}
+
+#main.joinAgreePage .joinAgree {
+	width: 650px;
+}
+
+div#wrap>main>div.joinAgree>div#chkAllArea {
+	font-size: 18px;
+	margin: 20px 20px 40px;
+}
+
+div#wrap>main>div.joinAgree>div#chkAllArea input {
+	width: 22px;
+	height: 22px;
+	transform: translateY(6px);
+}
+
+div#wrap>main>div.joinAgree>div#licenseArea>div.termArea {
+	margin-bottom: 40px;
+}
+
+#wrap>main>.joinAgree>#licenseArea>.termArea>h3 {
+	width: 600px;
+	margin: 5px 20px;
+}
+
+#wrap>main>.joinAgree>#licenseArea>.termArea>iframe {
+	width: 600px;
+	border: 1px solid #aaa;
+	margin: 5px 20px;
+	background-color: #fff;
+	display: block;
+}
+
+#wrap>main>div.joinAgree>#licenseArea>.termArea>label {
+	margin-left: 20px;
+}
+
+#wrap>main>div.joinAgree>#licenseArea>.termArea>label>input[type=checkbox]
+	{
+	width: 18px;
+	height: 18px;
+	transform: translateY(3px);
+}
+
+#wrap>form#joinFrm {
+	text-align: center;
+}
+
+#wrap main #formArea>button {
+	width: 150px;
+	height: 50px;
+	color: #fff;
+	font-size: 18px;
+	padding: 6px 20px;
+	border: none;
+	border-radius: 4px;
+	background-color: #50b639;
+	cursor: pointer;
+}
+
+#wrap main #formArea>button:hover {
+	color: #f6f6f6;
+}
+/*////// 회원가입 사용권 동의 끝 /member/joinAgreement.jsp /////// */
+
+/*//////////// 회원가입 스타일 시작 /member/member.jsp //////////// */
+#main.memberPage.dFlex {
+	flex-direction: column;
+	align-items: center;
+}
+
+#main.memberPage .logoArea {
+	padding: 30px 0;
+}
+
+#main.memberPage .joinAgree {
+	width: 650px;
+}
+
+#main .joinInsert #regFrm {
+	width: 470px;
+	margin: 0 auto;
+	/* background-color: rgba(215,25,25,0.5); */
+}
+
+#main .joinInsert #regFrm #regFrmTbl {
+	width: 100%;
+}
+#wrap #regFrmTbl li{
+	padding: 15px 0;	
+}
+#wrap #regFrmTbl li > div {
+	display: flex;
+	justify-content: space-between;
+    align-items: center;
+}
+#wrap #regFrmTbl li > div.genderArea,
+#wrap #regFrmTbl li > div.hobbyArea {
+	justify-content: flex-start;
+}
+#wrap #regFrmTbl li > div.btnArea {
+	justify-content: center;
+}
+#wrap #regFrmTbl li h3 {
+	font-size: 16px;
+	padding-bottom: 10px;
+}
+
+#wrap #regFrmTbl li p {
+	font-size: 13px;
+	color: #666;
+	margin-top: 10px;
+}
+
+#wrap #regFrmTbl li p#pwChk {
+	color: #f00;
+}
+
+#wrap #regFrmTbl li input {
+	font-size: 15px;
+	height: 40px;
+	border: solid 1px #dadada;
+	padding: 10px 14px;
+	display: inline-block;
+	border-radius: 4px;
+}
+
+#wrap #regFrmTbl li label.subTxt {
+	font-size: 13px;
+	color: #444;
+	cursor: pointer;
+	vertical-align: middle;
+	margin-left: 10px;
+}
+#wrap #regFrmTbl li label.checkboxTxt {
+	font-size: 15px;
+	color: #444;
+	cursor: pointer;
+	vertical-align: middle;
+	margin-right: 15px;
+}
+#wrap #regFrmTbl li input:focus-visible {
+	border: 1px solid #50b639;
+	outline: 1px solid #50b639;
+}
+
+#wrap input[type="radio"],
+#wrap input[type="checkbox"] {
+	display: none !important;
+}
+
+#wrap input[type="checkbox"] + i {
+	display: inline-block;
+	width: 20px;
+    height: 20px;
+    border: 1px solid #444;
+    background-color: #fff;
+	position: relative;
+	border-radius: 2px;
+	vertical-align: -5px;
+}
+#wrap input[type="checkbox"]:checked + i {
+    border: 1px solid #50b639;
+    background-color: #50b639;
+}
+#wrap input[type="checkbox"]:checked + i::after {
+	content: '✔';
+	color: #fff;
+	font-size: 15px;
+	width: 15px;
+	height: 15px;
+	text-align: center;
+	position: absolute;
+	left: 0;
+	top: -1px;
+}
+#wrap #regFrmTbl li select.frmDropMenu {
+	font-size: 15px;
+	padding: 4px 7px 5px;
+	outline: none;
+	height: 40px;
+	border: 1px solid #dadada;
+	border-radius: 4px;
+}
+
+#wrap #regFrmTbl li label.radioTxt {
+	font-size: 15px;
+	color: #444;
+	cursor: pointer;
+	vertical-align: middle;
+	margin-right: 15px;
+}
+
+#wrap input[type="radio"] + i {
+	display: inline-block;
+	width: 20px;
+    height: 20px;
+    border: 1px solid #444;
+    background-color: #fff;
+	position: relative;
+	border-radius: 50%;
+	vertical-align: -5px;
+}
+#wrap input[type="radio"]:checked + i {
+    border: 1px solid #50b639;
+}
+#wrap input[type="radio"]:checked + i::after {
+	content: '';
+	position: absolute;
+	background-color: #50b639;
+	width: 12px;
+	height: 12px;
+	text-align: center;
+	left: 3px;
+	top: 3px;
+	border-radius: 50%;
+}
+
+#wrap #regFrmTbl li button {
+	min-width: 110px;
+	font-size: 15px;
+	height: 40px;
+	border: none;
+	padding: 10px 14px;
+	display: inline-block;
+	border-radius: 4px;
+	color: #fff;
+	background-color: #50b639;
+	cursor: pointer;
+}
+#wrap #regFrmTbl li .btnArea button {
+	margin: 0 5px;	
+}
+
+/* 회원가입 필수 입력 시작 */
+#wrap #regFrmTbl li .req::after {
+	content: " *";
+	color: #f00;
+}
+/* 회원가입 필수 입력 끝 */
+
+#wrap #regFrmTbl li #uid,
+#wrap #regFrmTbl li #upw,
+#wrap #regFrmTbl li #emailAuth,
+#wrap #regFrmTbl li #ujob
+ {
+	width: 355px;
+}
+#wrap #regFrmTbl li #upw_Re,
+#wrap #regFrmTbl li #uname,
+#wrap #regFrmTbl li #ubirthday,
+#wrap #regFrmTbl li #uaddr,
+#wrap #regFrmTbl li #ujob {
+	width: 100%;
+}
+
+
+/* 이메일 인증코드 입력 시작 */
+#wrap #regFrmTbl li#emailAuthArea {
+	display: none;
+}
+/* 이메일 인증코드 입력 끝 */
+
+/* 우편번호 아웃라인 제거 */
+#wrap #regFrmTbl li input#uzipcode:focus-visible,
+#wrap #regFrmTbl li input#uzipcode {
+	border: 1px solid #dadada;
+	outline: none;
+	width: 350px;
+	cursor: default;
+}
+/*//////////// 회원가입 스타일 끝 /member/member.jsp //////////// */

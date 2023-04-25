@@ -1,0 +1,167 @@
+@charset "UTF-8";
+
+/* #header 시작 */
+#header>* {
+	margin: 0 20px;
+}
+
+#header {
+	height: 90px;
+	border-bottom: 1px solid #aaa;
+}
+/* 로고 */
+#headerLogo>a {
+	display: block;
+}
+
+#header #innerWrap {
+	position: relative;
+	align-items: center;
+}
+
+#userData * {
+	color: #666;
+	font-size: 13px;
+}
+
+#header nav#gnb {
+	margin-left: 90px;
+	flex: 1;
+}
+
+#header #gnb>ul#mainMenu {
+	height: 90px;
+	align-items: center;
+	justify-content: center;
+}
+
+#header #gnb>#mainMenu>li:nth-child(2n-1) {
+	width: 100px;
+}
+
+#header #gnb>#mainMenu>li:nth-child(2n) {
+	padding: 0 30px;
+}
+
+#header #gnb>#mainMenu>li>a {
+	width: 100px;
+	text-align: center;
+	display: inline-block;
+	font-size: 20px;
+	line-height: 90px;
+	color: #2d2723;
+	font-weight: bold;
+}
+
+#header #gnb>#mainMenu>li:hover>a {
+	font-weight: bold;
+}
+/* #header 끝 */
+
+/* #main 시작 */
+#main {
+	background-color: #f6f6f9;
+	padding: 50px 0 100px;
+}
+
+#main #innerWrap.dFlex {
+	align-items: flex-start;
+}
+
+#main #innerWrap.dFlex #contents {
+	flex:1;
+}
+#main #contents {
+	background-color: #fff;
+	padding: 30px;
+}
+
+/* #main #mainLNB 시작 */
+#main #lnb {
+	width: 185px;
+	margin-right: 30px;
+	background-color: #fff;
+}
+
+#main #lnb #mainLNB #lnbMainMenu .lnbMainH1 {
+	width: 185px;
+	height: 105px;
+	background: url(../images/lnbH_back.png) 0 0 no-repeat;
+	width: 100%;
+}
+
+#main #lnb #mainLNB #lnbMainMenu .lnbMainH1 .tit {
+	font-size: 24px;
+	line-height: 105px;
+	color: #fff;
+	text-align: center;
+	font-weight: bold;
+}
+
+#main #lnb #mainLNB a {
+	display: block;
+	width: 100%;
+	padding: 15px 15px 15px 20px;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 26px;
+	color: #444;
+}
+
+#main #lnb #mainLNB li.on>a, #main #lnb #mainLNB li:hover>a {
+	color: #50b639;
+}
+
+#main #lnb #mainLNB li:first-child {
+	border-top: none;
+}
+
+#main #lnb #mainLNB li {
+	border-top: 1px solid #e6e6e8;
+}
+/* #main #mainLNB 끝 */
+
+/* #footer 시작 */
+#footer {
+	background-color: #444445;
+	padding: 50px 0;
+}
+
+#footer * {
+	color: #ccc;
+}
+
+#footer a, footer#footer address {
+	font-size: 13px;
+	text-align: center;
+}
+
+#footer nav#footerGNB>ul#footerMainMenu {
+	justify-content: center;
+}
+
+#footer nav#footerGNB>ul#footerMainMenu>li:nth-child(2n) {
+	margin: 0 10px;
+}
+
+#footer nav#footerGNB>ul#footerMainMenu>li:hover>a {
+	font-weight: bold;
+}
+
+#footer .dFlex {
+	margin: 4px;
+	justify-content: center;
+}
+
+#footer .dFlex>* {
+	margin: 0 10px;
+}
+
+#footer .dFlex>*::before {
+	content: "ㆍ";
+	font-size: 20px;
+	font-weight: bold;
+	position: relative;
+	top: 3px;
+}
+/* #footer 끝 */
