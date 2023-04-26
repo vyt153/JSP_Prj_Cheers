@@ -1,0 +1,8 @@
+이름 : JSP_Prj_Cheers
+
+ID : qhfka2854@naver.com
+
+URI = https://github.com/vyt153/JSP_Prj_Cheers.git
+
+Token
+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
