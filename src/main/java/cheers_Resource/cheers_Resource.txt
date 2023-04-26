@@ -1,6 +1,0 @@
-cheers URI = https://github.com/vyt153/cheers.git
-
-PrjName = cheers
-
-Token
-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
