@@ -7,7 +7,7 @@
 	<!-- 로고, GNB -->
 	<div id="innerWrap" class="dFlex">
 		<div id="headerLogo">
-			<a href="/index.jsp"> <img src="/images/logo.png" alt="헤더로고이미지">
+			<a href="/admin/adminIndex.jsp"> <img src="/images/logo.png" alt="헤더로고이미지">
 			</a>
 		</div>
 
@@ -15,14 +15,14 @@
 
 			<ul id="mainMenu" class="dFlex">
 
-				<li class="mainLi"><a href="/index.jsp">HOME</a></li>
+				<li class="mainLi"><a href="/admin/adminIndex.jsp">HOME</a></li>
 				<%if(admSession_HTMP!=null) {%>
 				<li class="mainLi"><a href="/member/mypage.jsp?gnbParam=myPage">관리자 관리</a></li>
+				<li class="mainLi"><a href="/admin/logout.jsp">로그아웃</a></li>
 				<%} else{ %>
 				<li class="mainLi"><a href="/admin/admLogin.jsp">로그인</a></li>
 				<%} %>
 				<li class="mainLi"><a href="#">고객센터</a></li>
-				<li class="mainLi"><a href="/admin/logout.jsp">로그아웃</a></li>
 				<!-- <li class="mainLi"><a href="/bbs/list.jsp?gnbParam=list">게시판</a></li> -->
 
 			</ul>

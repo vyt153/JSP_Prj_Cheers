@@ -76,7 +76,7 @@ public class AdminMgr {
 			
 			multi = new MultipartRequest(request, SAVEFOLDER, maxSize, encType, new DefaultFileRenamePolicy());
 			if(multi.getFilesystemName("filename")!=null) {
-				filename = multi.getParameter("filename");
+				filename = multi.getFilesystemName("filename");
 				oriFilename = multi.getOriginalFileName("filename");
 				filesize = (int)multi.getFile("filename").length();
 			}
@@ -97,7 +97,7 @@ public class AdminMgr {
 		}
 	}
 	
-	public List<AdmBoardBean> getNotice(String keyWord, String keyField, int start, int end){
+	public List<AdmBoardBean> getNoticeList(String keyWord, String keyField, int start, int end){
 		String sql;
 		List<AdmBoardBean> list = new ArrayList<>(); 
 		try {
@@ -105,7 +105,7 @@ public class AdminMgr {
 			if(keyWord==null||keyWord.equals("")) {
 				sql = "select * from notice";
 			} else {
-				sql = "select * from notice where "+keyField+" like "+"%"+keyWord+"%"+" ";
+				sql = "select * from notice where "+keyField+" like "+"%"+keyWord+"%"+" and post = 1 ";
 				sql += "order by num limit "+start+","+end+"";
 			}
 			rs = stmt.executeQuery(sql);
@@ -132,6 +132,113 @@ public class AdminMgr {
 		}
 		
 		return list;
+	}
+	public AdmBoardBean getNotice(int numParam){
+		String sql;
+		AdmBoardBean bean = null;
+		try {
+			stmt = conn.createStatement();
+			sql = "select * from notice where num = "+numParam+"";
+			rs = stmt.executeQuery(sql);
+			if(rs.next()) {
+				int num = rs.getInt("num");
+				String admId = rs.getString("admId");
+				String admName = rs.getString("admName");
+				String subject = rs.getString("subject");
+				String content = rs.getString("content");
+				int readcnt = rs.getInt("readcnt");
+				String filename = rs.getString("filename");
+				String oriFilename = rs.getString("oriFilename");
+				int filesize = rs.getInt("filesize");
+				int post = rs.getInt("post");
+				int fixed = rs.getInt("fixed");
+				int type = rs.getInt("type");
+				String saveTM = rs.getString("saveTM");
+				String postTM = rs.getString("postTM");
+				bean = new AdmBoardBean(num, admId, admName, subject, content, readcnt, filename, oriFilename, filesize, post, fixed, type, saveTM, postTM);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return bean;
+	}
+	
+	public void upCount(int num) {
+		String sql = "update notice set readcnt = readcnt+1 where num = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public int updateNotice(HttpServletRequest req) {
+		int exeCnt = 0;
+		String sql;
+		try {
+			multi = new MultipartRequest(req, SAVEFOLDER, maxSize, encType, new DefaultFileRenamePolicy());
+			String filename = multi.getFilesystemName("filename");
+			
+			if(filename==null) {
+				sql = "update notice set subject = ?, content = ?, post = ?, fixed = ?, type = ? where num = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, multi.getParameter("subject"));
+				pstmt.setString(2, multi.getParameter("content"));
+				pstmt.setInt(3, Integer.parseInt(multi.getParameter("post")));
+				pstmt.setInt(4, Integer.parseInt(multi.getParameter("fixed")));
+				pstmt.setInt(5, Integer.parseInt(multi.getParameter("type")));
+				pstmt.setInt(6, Integer.parseInt(multi.getParameter("num")));
+				exeCnt = pstmt.executeUpdate();
+				
+			} else {
+				sql = "select filename from notice where num = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, Integer.parseInt(multi.getParameter("num")));
+				rs = pstmt.executeQuery();
+				rs.next();
+				String oldFile = rs.getString(1);
+				String fileSrc = SAVEFOLDER + "/" + oldFile;
+				File file = new File(fileSrc);
+				file.delete();
+				
+				sql = "update notice set subject = ?, content = ?, post = ?, fixed = ?, type = ?, ";
+				sql += "filename = ?, oriFilename = ?, filesize = ? where num = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, multi.getParameter("subject"));
+				pstmt.setString(2, multi.getParameter("content"));
+				pstmt.setInt(3, Integer.parseInt(multi.getParameter("post")));
+				pstmt.setInt(4, Integer.parseInt(multi.getParameter("fixed")));
+				pstmt.setInt(5, Integer.parseInt(multi.getParameter("type")));
+				pstmt.setString(6, filename);
+				pstmt.setString(7, multi.getOriginalFileName("filename"));
+				pstmt.setInt(8, (int)multi.getFile("filename").length());
+				pstmt.setInt(9, Integer.parseInt(multi.getParameter("num")));
+				exeCnt = pstmt.executeUpdate();
+			}
+		} catch (SQLException | IOException e) {
+			e.printStackTrace();
+		}
+		
+		return exeCnt;
+	}
+	
+	public int getTotalRecord() {
+		int recordCnt = 0;
+		String sql= "select count(*) from notice";
+		
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			if(rs.next()) recordCnt = rs.getInt(1);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return recordCnt;
 	}
 	public List<MemberLoginBean> previewUserInfo(){
 		List<MemberLoginBean> list = new ArrayList<MemberLoginBean>();

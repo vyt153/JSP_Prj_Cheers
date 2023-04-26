@@ -13,11 +13,7 @@
 <%@ page import="pack.admin.AdminBean" %>
 <jsp:useBean id="admMgr" class="pack.admin.AdminMgr"/>
 <% request.setCharacterEncoding("UTF-8"); 
-
-int nListSize = 0; // 1페이지에서 보여주는 데이터 수
-
-
-List<AdmBoardBean> nList = null;
+List<AdmBoardBean> nList = admMgr.getNoticeList("", "", 0, 10);
 %>
 <style>
 #iconSample {
@@ -44,41 +40,62 @@ div.bbsList tr.adminTr>td.subjectTd {
 	text-align: left;
 }
 </style>
-		<link rel="stylesheet" href="/style/style_BBS.css">
-		<script src="/script/script_BBS.js"></script> 	
-	    	<main id="main">
-	    		<div id="innerWrap" class="dFlex">
-	    		<div id="contents" class="bbsList">
-	    			<h3><a href="/admin/admNotice.jsp">공지사항</a></h3>
-	  
-	    			<table id="noticeList">
-	    				<thead>
-	    					<tr>
-	    						<th>번호</th>
-	    						<th>제목</th>
-	    						<th>이름</th>
-	    						<th>날짜</th>
-	    						<th>조회수</th>
-	    					</tr>
-	    					<tr>
-	    						<td colspan="5" class="spaceTd"></td>
-	    					</tr>
-	    				</thead>
-	    				<tbody>
-	    				
-	    				<%
-	    					if(nList==null){%>
-	    					<tr>
-	    						<td colspan="5">
-	    						<%="게시물이 없습니다." %>
-	    						</td>
-	    					</tr>
-	    				<%} else{%>
-	    				
-	    				<% } %>
-	    				</tbody>
-	    			</table>
-	    		</div>
-	    		<!-- 실제 작업 영역 끝 -->
-	    		</div>
-	    	</main>
+<script>
+function Read(p1,p2){
+	let p3 = "";
+	let p4 = "";
+	let param = "/admin/noticeRead.jsp?num="+p1;
+		param += "&nowPage="+p2;
+		param += "&keyField="+p3;
+		param += "&keyWord="+p4;
+	location.href = param;
+}
+</script>
+<link rel="stylesheet" href="/style/style_BBS.css">
+<script src="/script/script_BBS.js"></script> 	
+   	<main id="main">
+   		<div id="innerWrap" class="dFlex">
+	   		<div id="contents" class="bbsList">
+	   			<h3><a href="/admin/admNotice.jsp">공지사항</a></h3>
+	 
+	   			<table id="noticeList">
+	   				<thead>
+	   					<tr>
+	   						<th>번호</th>
+	   						<th>제목</th>
+	   						<th>이름</th>
+	   						<th>날짜</th>
+	   						<th>조회수</th>
+	   					</tr>
+	   					<tr>
+	   						<td colspan="5" class="spaceTd"></td>
+	   					</tr>
+	   				</thead>
+	   				<tbody>
+	   				
+	 				<%
+	 					if(nList==null){%>
+	   					<tr>
+	   						<td colspan="5">
+	   						<%="게시물이 없습니다." %>
+	   						</td>
+	   					</tr>
+	 				<%} else{
+	 						for(int i=0; i<nList.size();i++){
+	 							if(i==10) break;
+	 							AdmBoardBean bean = nList.get(i);%>
+	   					<tr onclick="Read('<%=bean.getNum()%>', '<%=1%>')">
+	   						<td><%=bean.getNum() %></td>
+	   						<td><%=bean.getSubject() %></td>
+	   						<td><%=bean.getadmName() %></td>
+	   						<td><%=bean.getPostTM() %></td>
+	   						<td><%=bean.getReadcnt() %></td>
+	   					</tr>
+	   				<%}
+	   				} %>
+	   				</tbody>
+	   			</table>
+	   		</div>
+   		<!-- 실제 작업 영역 끝 -->
+   		</div>
+   	</main>

@@ -86,6 +86,15 @@ div.bbsList tr.adminTr>td.subjectTd {
 $(function () {
 	$("title").text("게시판");
 })
+function read(p1,p2){
+	let p3 = $("#pKeyField").val().trim();
+	let p4 = $("#pKeyWord").val().trim();
+	let param = "/admin/noticeRead.jsp?num="+p1;
+		param += "&nowPage="+p2;
+		param += "&keyField="+p3;
+		param += "&keyWord="+p4;
+	location.href = param;
+}
 </script>
 		<link rel="stylesheet" href="/style/style_BBS.css">
 		<script src="/script/script_BBS.js"></script>

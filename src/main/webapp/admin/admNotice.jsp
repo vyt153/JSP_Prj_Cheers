@@ -48,14 +48,14 @@ if(request.getParameter("nowPage")!=null){
 	end = numPerPage;
 }
 
-totalRecord = 0;
+totalRecord = admMgr.getTotalRecord();
 
 totalPage = (int)Math.ceil((double)totalRecord/numPerPage);
 nowBlock = (int)Math.ceil((double)nowPage/pagePerBlock);
 totalBlock = (int)Math.ceil((double)totalPage/pagePerBlock);
 
 // 페이징 관련 속성 끝//
-List<AdmBoardBean> list = null;
+List<AdmBoardBean> list = admMgr.getNoticeList(keyWord, keyField, start, end);
 %>
 <%@ include file="/ind/topTmp.jsp" %>
 <style>
@@ -87,6 +87,15 @@ div.bbsList tr.adminTr>td.subjectTd {
 $(function () {
 	$("title").text("공지사항");
 })
+function Read(p1,p2){
+	let p3 = $("#pKeyField").val().trim();
+	let p4 = $("#pKeyWord").val().trim();
+	let param = "/admin/noticeRead.jsp?num="+p1;
+		param += "&nowPage="+p2;
+		param += "&keyField="+p3;
+		param += "&keyWord="+p4;
+	location.href = param;
+}
 </script>
 		<link rel="stylesheet" href="/style/style_BBS.css">
 		<script src="/script/script_BBS.js"></script>
@@ -138,8 +147,27 @@ $(function () {
 	    						<%="게시물이 없습니다." %>
 	    						</td>
 	    					</tr>
-	    				<%} else{%>
-	    				
+	    				<%} else{
+	    				for(int i=0; i<numPerPage;i++){
+	 							if(i==list.size()) break;
+	 							AdmBoardBean bean = list.get(i);
+	 							String filename = bean.getFilename();
+    							%>
+	   					<tr onclick="Read('<%=bean.getNum()%>', '<%=nowPage%>')">
+	   						<td><%=bean.getNum() %></td>
+	   						<td class="subjectTd">
+   							<%out.print(bean.getSubject());
+   							if(filename!=null){
+   								out.print("<img src='/images/clip_16x10.png' alt=''>");
+   							}
+   							;%>
+	    						</td>
+	   						<td><%=bean.getadmName() %></td>
+	   						<td><%=bean.getPostTM() %></td>
+	   						<td><%=bean.getReadcnt() %></td>
+	   					</tr>
+	   				<%}%>
+	    					
 	    				<% } %>
 	    					<tr id="listBtnArea">
 	    						<td colspan="2">

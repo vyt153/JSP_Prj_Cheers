@@ -9,6 +9,17 @@
 <script>
 $(function () {
 	$("title").text("공지사항 글쓰기");
+	$("#noticeBtn").click(function(){
+		let subject = $("#subject").val().trim();
+		
+		if(subject==""){
+			alert("제목은 필수입력입니다.");
+			$("#subject").focus();
+		} else{
+			$("#writeFrm").attr("action","/admin/admWriteProc.jsp");
+			$("#writeFrm").submit();
+		}
+	});
 })
 </script>
 		<link rel="stylesheet" href="/style/style_BBS.css">
@@ -98,7 +109,7 @@ $(function () {
 			    				</tr>
 			    				<tr>
 			    					<td colspan="2">
-			    						<button type="button">등록</button>
+			    						<button id="noticeBtn" type="button">등록</button>
 			    						<button type="reset" id="resetBtn">다시쓰기</button>
 			    						<button type="button" id="listBtn">돌아가기</button>
 			    					</td>

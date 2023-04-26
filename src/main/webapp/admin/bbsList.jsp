@@ -90,14 +90,14 @@ $(function () {
 		<link rel="stylesheet" href="/style/style_BBS.css">
 		<script src="/script/script_BBS.js"></script>
 			<!--  헤더템플릿 시작 -->
-			<%@ include file="/ind/headerTmp.jsp" %>
+			<%@ include file="/admind/headerTmp.jsp" %>
 	    	<!--  헤더템플릿 끝 -->    	
 	    	
 	    	<main id="main">
 	    		<div id="innerWrap" class="dFlex">
 	    		<div id="lnb">
 	    			<!--  메인 LNB 템플릿 시작 -->
-					<%@ include file="/ind/mainLnbTmp.jsp" %>
+					<%@ include file="/admind/mainLnbTmp.jsp" %>
 		    		<!--  메인 LNB 템플릿 끝 -->    	
 	    		</div>
 	    		<div id="contents" class="bbsList">
@@ -196,36 +196,8 @@ $(function () {
 	    						<td><%=regtm %></td>
 	    						<td><%=readcnt %></td>
 	    					</tr>
-	    					<%} else{%>
-	    					<tr class="prnTr" onclick="read('<%=num%>', '<%=nowPage%>')">
-	    						<td>
-	    							<% if(depth==0) out.print(num);// 답변글이 아님을 의미함 %>
-	    						</td>
-	    						<td class="subjectTd">
-	    							<%
-    								if(depth>0){
-    									for(int blank=0;blank<depth;blank++){
-    										out.print("&nbsp;&nbsp;&nbsp;&nbsp;");
-    									}
-   									out.print("<img src='/images/replyImg.png' alt=''>");
-    								}
-	    							out.print(subject);
-	    							if(filename!=null){
-	    								out.print("<img src='/images/clip_16x10.png' alt=''>");
-	    							}
-	    							if(time-writeTm<1000000){
-	    								out.print("<span id='iconSample'>N</span>");
-	    							}else{
-	    								regtm = regtm.substring(0, 10);
-	    							}
-	    							%>
-	    						</td>
-	    						<td><%=uname %></td>
-	    						<td><%=regtm %></td>
-	    						<td><%=readcnt %></td>
-	    					</tr>
-	    					<%} %>
-	    					<%  } 
+	    					<%}
+	    					  } 
 	    					}%>
 	    					<tr id="listBtnArea">
 	    						<td colspan="2">

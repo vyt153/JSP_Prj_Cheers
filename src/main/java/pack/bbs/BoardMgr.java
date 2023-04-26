@@ -10,10 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Enumeration;
 import java.util.Vector;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.JspWriter;
@@ -23,7 +21,6 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import pack.dbcp.DBConnectionMgr;
-import pack.gallery.GalleryBean;
 
 public class BoardMgr {
 	private DBConnectionMgr pool;
@@ -36,7 +33,6 @@ public class BoardMgr {
 	private static final String SAVEFOLER = "D:/AJR_20230126/Hong/silsp/p08_JSP/cheers_0420/src/main/webapp/fileupload";
 	private static String encType = "UTF-8";
 	private static int maxSize = 50 * 1024 * 1024; // 5mbyte 제한
-	
 	public BoardMgr() {
 		pool = DBConnectionMgr.getInstance();
 		try {
