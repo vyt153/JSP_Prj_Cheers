@@ -4,4 +4,4 @@ https://github.com/vyt153/AdminTest.git
 GitHub Repository Name = AdminTest
 
 Token
-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
+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
